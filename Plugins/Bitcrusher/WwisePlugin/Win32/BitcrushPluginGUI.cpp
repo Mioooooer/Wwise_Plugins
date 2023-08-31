@@ -21,44 +21,17 @@ under the Apache License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
 OR CONDITIONS OF ANY KIND, either express or implied. See the Apache License for
 the specific language governing permissions and limitations under the License.
 
-  Version: <VERSION>  Build: <BUILDNUMBER>
-  Copyright (c) <COPYRIGHTYEAR> Audiokinetic Inc.
+  Copyright (c) 2022 Audiokinetic Inc.
 *******************************************************************************/
 
-#include "Bitcrush.h"
-#include "BitcrushPlugin.h"
-#include "../BitcrushConfig.h"
+#include "BitcrushPluginGUI.h"
 
-#include <AK/Wwise/Utilities.h>
-#include <AK/Tools/Common/AkAssert.h>
-
-#ifdef _DEBUG
-#define new DEBUG_NEW
-#endif
-
-BEGIN_MESSAGE_MAP(BitcrushApp, CWinApp)
-END_MESSAGE_MAP()
-
-BitcrushApp::BitcrushApp()
+BitcrushPluginGUI::BitcrushPluginGUI()
 {
 }
 
-BitcrushApp theApp;
-
-BOOL BitcrushApp::InitInstance()
-{
-    CWinApp::InitInstance();
-    AK::Wwise::RegisterWwisePlugin();
-    return TRUE;
-}
-
-AK::Wwise::IPluginBase* __stdcall AkCreatePlugin(unsigned short in_companyID, unsigned short in_pluginID)
-{
-    if (in_companyID == BitcrushConfig::CompanyID && in_pluginID == BitcrushConfig::PluginID)
-        return new BitcrushPlugin;
-
-    return nullptr;
-}
-
-DEFINEDUMMYASSERTHOOK;
-DEFINE_PLUGIN_REGISTER_HOOK;
+ADD_AUDIOPLUGIN_CLASS_TO_CONTAINER(
+    Bitcrush,            // Name of the plug-in container for this shared library
+    BitcrushPluginGUI,   // Authoring plug-in class to add to the plug-in container
+    BitcrushFX           // Corresponding Sound Engine plug-in class
+);

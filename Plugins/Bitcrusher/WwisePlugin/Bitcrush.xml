@@ -33,52 +33,7 @@ for the documentation about the plugin xml format
   <EffectPlugin Name="Bitcrush" CompanyID="64" PluginID="0">
     <PluginInfo>
       <PlatformSupport>
-        <Platform Name="Windows">
-          <CanBeInsertOnBusses>true</CanBeInsertOnBusses>
-          <CanBeInsertOnAudioObjects>true</CanBeInsertOnAudioObjects>
-          <CanBeRendered>true</CanBeRendered>
-        </Platform>
-        <Platform Name="Linux">
-          <CanBeInsertOnBusses>true</CanBeInsertOnBusses>
-          <CanBeInsertOnAudioObjects>true</CanBeInsertOnAudioObjects>
-          <CanBeRendered>true</CanBeRendered>
-        </Platform>
-        <Platform Name="XboxOne">
-          <CanBeInsertOnBusses>true</CanBeInsertOnBusses>
-          <CanBeInsertOnAudioObjects>true</CanBeInsertOnAudioObjects>
-          <CanBeRendered>true</CanBeRendered>
-        </Platform>
-        <Platform Name="PS4">
-          <CanBeInsertOnBusses>true</CanBeInsertOnBusses>
-          <CanBeInsertOnAudioObjects>true</CanBeInsertOnAudioObjects>
-          <CanBeRendered>true</CanBeRendered>
-        </Platform>
-        <Platform Name="Android">
-          <CanBeInsertOnBusses>true</CanBeInsertOnBusses>
-          <CanBeInsertOnAudioObjects>true</CanBeInsertOnAudioObjects>
-          <CanBeRendered>true</CanBeRendered>
-        </Platform>
-        <Platform Name="Mac">
-          <CanBeInsertOnBusses>true</CanBeInsertOnBusses>
-          <CanBeInsertOnAudioObjects>true</CanBeInsertOnAudioObjects>
-          <CanBeRendered>true</CanBeRendered>
-        </Platform>
-        <Platform Name="iOS">
-          <CanBeInsertOnBusses>true</CanBeInsertOnBusses>
-          <CanBeInsertOnAudioObjects>true</CanBeInsertOnAudioObjects>
-          <CanBeRendered>true</CanBeRendered>
-        </Platform>
-        <Platform Name="Emscripten">
-          <CanBeInsertOnBusses>true</CanBeInsertOnBusses>
-          <CanBeInsertOnAudioObjects>true</CanBeInsertOnAudioObjects>
-          <CanBeRendered>true</CanBeRendered>
-        </Platform>
-        <Platform Name="Switch">
-          <CanBeInsertOnBusses>true</CanBeInsertOnBusses>
-          <CanBeInsertOnAudioObjects>true</CanBeInsertOnAudioObjects>
-          <CanBeRendered>true</CanBeRendered>
-        </Platform>
-        <Platform Name="Lumin">
+        <Platform Name="Any">
           <CanBeInsertOnBusses>true</CanBeInsertOnBusses>
           <CanBeInsertOnAudioObjects>true</CanBeInsertOnAudioObjects>
           <CanBeRendered>true</CanBeRendered>
@@ -94,8 +49,8 @@ for the documentation about the plugin xml format
         <Restrictions>
           <ValueRestriction>
             <Range Type="Real32">
-              <Min>-24</Min>
-              <Max>24</Max>
+              <Min>-24.0</Min>
+              <Max>24.0</Max>
             </Range>
           </ValueRestriction>
         </Restrictions>
@@ -107,8 +62,8 @@ for the documentation about the plugin xml format
         <Restrictions>
           <ValueRestriction>
             <Range Type="Real32">
-              <Min>1</Min>
-              <Max>16</Max>
+              <Min>1.0</Min>
+              <Max>16.0</Max>
             </Range>
           </ValueRestriction>
         </Restrictions>
@@ -120,8 +75,8 @@ for the documentation about the plugin xml format
         <Restrictions>
           <ValueRestriction>
             <Range Type="Real32">
-              <Min>0</Min>
-              <Max>100</Max>
+              <Min>0.0</Min>
+              <Max>100.0</Max>
             </Range>
           </ValueRestriction>
         </Restrictions>
@@ -137,8 +92,8 @@ for the documentation about the plugin xml format
         <Restrictions>
           <ValueRestriction>
             <Range Type="Real32">
-              <Min>0</Min>
-              <Max>1</Max>
+              <Min>0.0</Min>
+              <Max>1.0</Max>
             </Range>
           </ValueRestriction>
         </Restrictions>
@@ -150,8 +105,8 @@ for the documentation about the plugin xml format
         <Restrictions>
           <ValueRestriction>
             <Range Type="Real32">
-              <Min>-24</Min>
-              <Max>24</Max>
+              <Min>-24.0</Min>
+              <Max>24.0</Max>
             </Range>
           </ValueRestriction>
         </Restrictions>

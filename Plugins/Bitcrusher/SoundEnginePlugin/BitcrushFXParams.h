@@ -64,25 +64,25 @@ struct BitcrushFXParams
     ~BitcrushFXParams();
 
     /// Create a duplicate of the parameter node instance in its current state.
-    IAkPluginParam* Clone(AK::IAkPluginMemAlloc* in_pAllocator);
+    IAkPluginParam* Clone(AK::IAkPluginMemAlloc* in_pAllocator) override;
 
     /// Initialize the plug-in parameter node interface.
     /// Initializes the internal parameter structure to default values or with the provided parameter block if it is valid.
-    AKRESULT Init(AK::IAkPluginMemAlloc* in_pAllocator, const void* in_pParamsBlock, AkUInt32 in_ulBlockSize);
+    AKRESULT Init(AK::IAkPluginMemAlloc* in_pAllocator, const void* in_pParamsBlock, AkUInt32 in_ulBlockSize) override;
 
     /// Called by the sound engine when a parameter node is terminated.
-    AKRESULT Term(AK::IAkPluginMemAlloc* in_pAllocator);
+    AKRESULT Term(AK::IAkPluginMemAlloc* in_pAllocator) override;
 
     /// Set all plug-in parameters at once using a parameter block.
-    AKRESULT SetParamsBlock(const void* in_pParamsBlock, AkUInt32 in_ulBlockSize);
+    AKRESULT SetParamsBlock(const void* in_pParamsBlock, AkUInt32 in_ulBlockSize) override;
 
     /// Update a single parameter at a time and perform the necessary actions on the parameter changes.
-    AKRESULT SetParam(AkPluginParamID in_paramID, const void* in_pValue, AkUInt32 in_ulParamSize);
+    AKRESULT SetParam(AkPluginParamID in_paramID, const void* in_pValue, AkUInt32 in_ulParamSize) override;
 
     AK::AkFXParameterChangeHandler<NUM_PARAMS> m_paramChangeHandler;
 
     BitcrushRTPCParams RTPC;
     BitcrushNonRTPCParams NonRTPC;
-} AK_ALIGN_DMA;
+};
 
 #endif // BitcrushFXParams_H

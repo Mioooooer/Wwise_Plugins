@@ -21,8 +21,7 @@ under the Apache License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
 OR CONDITIONS OF ANY KIND, either express or implied. See the Apache License for
 the specific language governing permissions and limitations under the License.
 
-  Version: v2019.1.1  Build: 6977
-  Copyright (c) 2006-2019 Audiokinetic Inc.
+  Copyright (c) 2022 Audiokinetic Inc.
 ------------------------------------------------------------------------------]]
 
 if not _AK_PREMAKE then
@@ -38,27 +37,28 @@ Plugin.sdk.shared = {}
 Plugin.authoring = {}
 
 -- SDK STATIC PLUGIN SECTION
-Plugin.sdk.static.includedirs =
+Plugin.sdk.static.includedirs = -- https://github.com/premake/premake-core/wiki/includedirs
 {
 }
-Plugin.sdk.static.files =
+Plugin.sdk.static.files = -- https://github.com/premake/premake-core/wiki/files
 {
-    "BitcrushFX.cpp",
-    "BitcrushFX.h",
-    "BitcrushFXParams.cpp",
-    "BitcrushFXParams.h",
+    "**.cpp",
+    "**.h",
+    "**.hpp",
+    "**.c",
 }
-Plugin.sdk.static.excludes =
+Plugin.sdk.static.excludes = -- https://github.com/premake/premake-core/wiki/removefiles
 {
+    "BitcrushFXShared.cpp"
 }
-Plugin.sdk.static.links =
+Plugin.sdk.static.links = -- https://github.com/premake/premake-core/wiki/links
 {
 }
 Plugin.sdk.static.libsuffix = "FX"
-Plugin.sdk.static.libdirs =
+Plugin.sdk.static.libdirs = -- https://github.com/premake/premake-core/wiki/libdirs
 {
 }
-Plugin.sdk.static.defines =
+Plugin.sdk.static.defines = -- https://github.com/premake/premake-core/wiki/defines
 {
 }
 
@@ -90,12 +90,13 @@ Plugin.authoring.includedirs =
 }
 Plugin.authoring.files =
 {
-    "BitcrushPlugin.cpp",
-    "BitcrushPlugin.h",
-    "Bitcrush.cpp",
-    "Bitcrush.h",
+    "**.cpp",
+    "**.h",
+    "**.hpp",
+    "**.c",
     "Bitcrush.def",
     "Bitcrush.xml",
+    "**.rc",
 }
 Plugin.authoring.excludes =
 {

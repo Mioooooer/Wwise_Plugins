@@ -28,10 +28,7 @@ the specific language governing permissions and limitations under the License.
 #include "BitcrushPlugin.h"
 #include "../SoundEnginePlugin/BitcrushFXFactory.h"
 
-#include <AK/Tools/Common/AkAssert.h>
-
 BitcrushPlugin::BitcrushPlugin()
-    : m_pPSet(nullptr)
 {
 }
 
@@ -39,22 +36,27 @@ BitcrushPlugin::~BitcrushPlugin()
 {
 }
 
-void BitcrushPlugin::Destroy()
-{
-    delete this;
-}
-
-void BitcrushPlugin::SetPluginPropertySet(AK::Wwise::IPluginPropertySet* in_pPSet)
-{
-    m_pPSet = in_pPSet;
-}
-
-bool BitcrushPlugin::GetBankParameters(const GUID& in_guidPlatform, AK::Wwise::IWriteData* in_pDataWriter) const
+bool BitcrushPlugin::GetBankParameters(const GUID & in_guidPlatform, AK::Wwise::Plugin::DataWriter& in_dataWriter) const
 {
     // Write bank data here
-    CComVariant varProp;
-    m_pPSet->GetValue(in_guidPlatform, L"Dummy", varProp);
-    in_pDataWriter->WriteReal32(varProp.fltVal);
+    in_dataWriter.WriteReal32(m_propertySet.GetReal32(in_guidPlatform, "Input"));
+    in_dataWriter.WriteReal32(m_propertySet.GetReal32(in_guidPlatform, "Bit Rate"));
+    in_dataWriter.WriteReal32(m_propertySet.GetReal32(in_guidPlatform, "Downsample Factor"));
+    in_dataWriter.WriteBool(m_propertySet.GetBool(in_guidPlatform, "Hard Clipping"));
+    in_dataWriter.WriteReal32(m_propertySet.GetReal32(in_guidPlatform, "Drive"));
+    in_dataWriter.WriteReal32(m_propertySet.GetReal32(in_guidPlatform, "Output"));
 
     return true;
 }
+
+DEFINE_AUDIOPLUGIN_CONTAINER(Bitcrush);											// Create a PluginContainer structure that contains the info for our plugin
+EXPORT_AUDIOPLUGIN_CONTAINER(Bitcrush);											// This is a DLL, we want to have a standardized name
+ADD_AUDIOPLUGIN_CLASS_TO_CONTAINER(                                             // Add our CLI class to the PluginContainer
+    Bitcrush,        // Name of the plug-in container for this shared library
+    BitcrushPlugin,  // Authoring plug-in class to add to the plug-in container
+    BitcrushFX       // Corresponding Sound Engine plug-in class
+);
+DEFINE_PLUGIN_REGISTER_HOOK
+
+DEFINEDUMMYASSERTHOOK;							// Placeholder assert hook for Wwise plug-ins using AKASSERT (cassert used by default)
+

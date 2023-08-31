@@ -21,20 +21,18 @@ under the Apache License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
 OR CONDITIONS OF ANY KIND, either express or implied. See the Apache License for
 the specific language governing permissions and limitations under the License.
 
-  Version: <VERSION>  Build: <BUILDNUMBER>
-  Copyright (c) <COPYRIGHTYEAR> Audiokinetic Inc.
+  Copyright (c) 2022 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
 
-#include <afxwin.h>
+#include "../BitcrushPlugin.h"
 
-class BitcrushApp
-    : public CWinApp
+class BitcrushPluginGUI final
+	: public AK::Wwise::Plugin::PluginMFCWindows<>
+	, public AK::Wwise::Plugin::GUIWindows
 {
 public:
-    BitcrushApp();
+	BitcrushPluginGUI();
 
-    BOOL InitInstance() override;
-    DECLARE_MESSAGE_MAP()
 };
