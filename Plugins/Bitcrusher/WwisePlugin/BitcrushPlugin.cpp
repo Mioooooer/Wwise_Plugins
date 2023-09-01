@@ -40,9 +40,9 @@ bool BitcrushPlugin::GetBankParameters(const GUID & in_guidPlatform, AK::Wwise::
 {
     // Write bank data here
     in_dataWriter.WriteReal32(m_propertySet.GetReal32(in_guidPlatform, "Input"));
-    in_dataWriter.WriteReal32(m_propertySet.GetReal32(in_guidPlatform, "Bit Rate"));
-    in_dataWriter.WriteReal32(m_propertySet.GetReal32(in_guidPlatform, "Downsample Factor"));
-    in_dataWriter.WriteBool(m_propertySet.GetBool(in_guidPlatform, "Hard Clipping"));
+    in_dataWriter.WriteReal32(m_propertySet.GetReal32(in_guidPlatform, "BitRate"));
+    in_dataWriter.WriteReal32(m_propertySet.GetReal32(in_guidPlatform, "DownsampleFactor"));
+    in_dataWriter.WriteBool(m_propertySet.GetBool(in_guidPlatform, "HardClipping"));
     in_dataWriter.WriteReal32(m_propertySet.GetReal32(in_guidPlatform, "Drive"));
     in_dataWriter.WriteReal32(m_propertySet.GetReal32(in_guidPlatform, "Output"));
 

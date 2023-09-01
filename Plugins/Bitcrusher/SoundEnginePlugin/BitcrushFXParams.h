@@ -44,11 +44,11 @@ static const AkUInt32 NUM_PARAMS = 6;
 struct BitcrushRTPCParams
 {
     AkReal32 InputAmplitude;
-    AkReal32 OutputAmplitude;
     AkReal32 BitRate;
     AkReal32 SampleRate;
     bool ClipType;
     AkReal32 Drive;
+    AkReal32 OutputAmplitude;
 };
 
 struct BitcrushNonRTPCParams

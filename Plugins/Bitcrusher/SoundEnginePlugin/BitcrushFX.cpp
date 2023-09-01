@@ -117,9 +117,10 @@ AkReal32 BitcrushFX::DownSample(AkReal32 InputSample, AkReal32 Factor)
     AkReal32 Result = 0.0f;
 
     // Check if index can be increased
-    if(Index < SampleIndex) 
+    if(Index <= SampleIndex) 
     {
-        Index += Factor;
+        Index = Factor;
+        SampleIndex = 0;
         PreviousSample = InputSample;
         Result = PreviousSample;
     }

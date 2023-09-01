@@ -55,10 +55,12 @@ AKRESULT BitcrushFXParams::Init(AK::IAkPluginMemAlloc* in_pAllocator, const void
     {
         // Initialize default parameters here
         RTPC.InputAmplitude     = 0.0f;
-        RTPC.OutputAmplitude    = 0.0f;
         RTPC.BitRate            = 0.0f;
         RTPC.SampleRate         = 0.0f;
-        RTPC.Drive              = 0.0f;        
+        RTPC.ClipType           = false;
+        RTPC.Drive              = 0.0f;
+        RTPC.OutputAmplitude    = 0.0f;
+                
         m_paramChangeHandler.SetAllParamChanges();
         return AK_Success;
     }
@@ -79,11 +81,11 @@ AKRESULT BitcrushFXParams::SetParamsBlock(const void* in_pParamsBlock, AkUInt32 
 
     // Read bank data here
     RTPC.InputAmplitude     = READBANKDATA(AkReal32, pParamsBlock, in_ulBlockSize);
-    RTPC.OutputAmplitude    = READBANKDATA(AkReal32, pParamsBlock, in_ulBlockSize);
     RTPC.BitRate            = READBANKDATA(AkReal32, pParamsBlock, in_ulBlockSize);
     RTPC.SampleRate         = READBANKDATA(AkReal32, pParamsBlock, in_ulBlockSize);
     RTPC.ClipType           = READBANKDATA(bool, pParamsBlock, in_ulBlockSize);
     RTPC.Drive              = READBANKDATA(AkReal32, pParamsBlock, in_ulBlockSize);
+    RTPC.OutputAmplitude    = READBANKDATA(AkReal32, pParamsBlock, in_ulBlockSize);
     CHECKBANKDATASIZE(in_ulBlockSize, eResult);
     m_paramChangeHandler.SetAllParamChanges();
 
@@ -101,26 +103,26 @@ AKRESULT BitcrushFXParams::SetParam(AkPluginParamID in_paramID, const void* in_p
         RTPC.InputAmplitude = *((AkReal32*)in_pValue);
         m_paramChangeHandler.SetParamChange(PARAM_ID_INPUT_AMPLITUDE);
         break;
-    case PARAM_ID_OUTPUT_AMPLITUDE:
-        RTPC.OutputAmplitude = *((AkReal32*)in_pValue);
-        m_paramChangeHandler.SetParamChange(PARAM_ID_OUTPUT_AMPLITUDE);
-        break;       
     case PARAM_ID_BIT_RATE:
         RTPC.BitRate = *((AkReal32*)in_pValue);
         m_paramChangeHandler.SetParamChange(PARAM_ID_BIT_RATE);
-        break;     
+        break;
     case PARAM_ID_SAMPLE_RATE:
         RTPC.SampleRate = *((AkReal32*)in_pValue);
         m_paramChangeHandler.SetParamChange(PARAM_ID_SAMPLE_RATE);
-        break;    
+        break;
     case PARAM_ID_CLIP_TYPE:
-        RTPC.ClipType = *((AkReal32*)in_pValue);
+        RTPC.ClipType = (*(AkReal32*)(in_pValue)) != 0;
         m_paramChangeHandler.SetParamChange(PARAM_ID_CLIP_TYPE);
-        break;           
+        break;
     case PARAM_ID_DRIVE:
         RTPC.Drive = *((AkReal32*)in_pValue);
         m_paramChangeHandler.SetParamChange(PARAM_ID_DRIVE);
-        break;                                    
+        break;
+    case PARAM_ID_OUTPUT_AMPLITUDE:
+        RTPC.OutputAmplitude = *((AkReal32*)in_pValue);
+        m_paramChangeHandler.SetParamChange(PARAM_ID_OUTPUT_AMPLITUDE);
+        break;
     default:
         eResult = AK_InvalidParameter;
         break;

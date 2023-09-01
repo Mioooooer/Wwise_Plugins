@@ -55,7 +55,7 @@ for the documentation about the plugin xml format
           </ValueRestriction>
         </Restrictions>
       </Property>    
-      <Property Name="Bit Rate" Type="Real32" SupportRTPCType="Exclusive" DisplayName="Bit Rate">
+      <Property Name="BitRate" Type="Real32" SupportRTPCType="Exclusive" DisplayName="BitRate">
         <UserInterface Step="0.1" Fine="0.001" Decimals="3" UIMax="16" />
         <DefaultValue>16.0</DefaultValue>
         <AudioEnginePropertyID>1</AudioEnginePropertyID>
@@ -68,7 +68,7 @@ for the documentation about the plugin xml format
           </ValueRestriction>
         </Restrictions>
       </Property>    
-      <Property Name="Downsample Factor" Type="Real32" SupportRTPCType="Exclusive" DisplayName="Downsample Factor">
+      <Property Name="DownsampleFactor" Type="Real32" SupportRTPCType="Exclusive" DisplayName="DownsampleFactor">
         <UserInterface Step="0.1" Fine="0.001" Decimals="3" UIMax="100" />
         <DefaultValue>0</DefaultValue>
         <AudioEnginePropertyID>2</AudioEnginePropertyID>
@@ -81,7 +81,7 @@ for the documentation about the plugin xml format
           </ValueRestriction>
         </Restrictions>
       </Property>  
-      <Property Name="Hard Clipping" Type="bool" SupportRTPCType="Exclusive" DisplayName="Hard Clipping">
+      <Property Name="HardClipping" Type="bool" SupportRTPCType="Exclusive" DisplayName="HardClipping">
         <DefaultValue>false</DefaultValue>
         <AudioEnginePropertyID>3</AudioEnginePropertyID>
       </Property>              
